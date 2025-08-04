@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,29 +11,59 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <!-- Animate.css for WOW.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- Custom Font (Poppins) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Google Fonts: Poppins (English) & Tajawal (Arabic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Tajawal:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
     <style>
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
         }
-        /* Custom styles for typography and layout */
+
+        /* Font definitions */
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            /* Ensure body background is white */
         }
+
+        [lang="ar"] body {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        /* Smooth transition for language switching */
+        [data-lang-en] {
+            transition: opacity 0.3s ease-in-out;
+        }
+
         .btn {
             transition: all 0.3s ease;
         }
+
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
+
+        /* Gradient button style */
+        .btn-gradient {
+            background-image: linear-gradient(to right, #ec4899, #f472b6);
+            border: none;
+            color: white;
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 8px 16px rgba(236, 72, 153, 0.3);
+        }
+
         /* Owl Carousel Custom Navigation */
         .owl-carousel .owl-nav button.owl-prev,
         .owl-carousel .owl-nav button.owl-next {
@@ -49,56 +80,76 @@
             transform: translateY(-50%);
             transition: all 0.3s ease;
         }
+
         .owl-carousel .owl-nav button.owl-prev:hover,
         .owl-carousel .owl-nav button.owl-next:hover {
-             background: white !important;
-             color: black !important;
+            background: white !important;
+            color: black !important;
         }
+
         .owl-carousel .owl-nav button.owl-prev {
             left: 10px;
         }
+
+        html[dir="rtl"] .owl-carousel .owl-nav button.owl-prev {
+            right: 10px;
+            left: auto;
+        }
+
         .owl-carousel .owl-nav button.owl-next {
             right: 10px;
         }
+
+        html[dir="rtl"] .owl-carousel .owl-nav button.owl-next {
+            left: 10px;
+            right: auto;
+        }
+
         .owl-carousel .owl-dots {
             margin-top: 15px;
         }
+
         .owl-carousel .owl-dots .owl-dot span {
             background: #ccc !important;
         }
+
         .owl-carousel .owl-dots .owl-dot.active span {
             background: #ec4899 !important;
         }
-        /* Ensure carousel images are uniform */
+
         .owl-carousel .item {
             height: 400px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .owl-carousel .item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
-        /* Social Icon Hover Effects */
+
         .social-icon {
             transition: transform 0.3s ease;
         }
+
         .social-icon:hover {
             transform: scale(1.15);
         }
+
         .facebook-hover:hover {
             color: #1877F2;
         }
+
         .instagram-hover:hover {
-            color: #d6249f; /* Fallback color */
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+            color: #d6249f;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Hamburger Menu Animation */
+
         .hamburger {
             cursor: pointer;
             width: 24px;
@@ -106,6 +157,7 @@
             transition: all 0.25s;
             position: relative;
         }
+
         .hamburger-top,
         .hamburger-middle,
         .hamburger-bottom {
@@ -114,43 +166,94 @@
             height: 3px;
             top: 0;
             left: 0;
-            background: #1f2937; /* gray-800 */
+            background: #1f2937;
             border-radius: 2px;
             transform: rotate(0);
             transition: all 0.5s;
         }
+
         .hamburger-middle {
             transform: translateY(7px);
         }
+
         .hamburger-bottom {
             transform: translateY(14px);
         }
+
         .open .hamburger-top {
             transform: rotate(45deg) translateY(6px) translateX(6px);
         }
+
         .open .hamburger-middle {
             display: none;
         }
+
         .open .hamburger-bottom {
             transform: rotate(-45deg) translateY(6px) translateX(-6px);
         }
-        /* Color Swatch Styling */
+
         .color-swatch {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             border: 2px solid transparent;
+            object-fit: cover;
         }
+
         .color-swatch.selected {
             ring: 2px;
             ring-offset-2;
-            --tw-ring-color: #ec4899; /* pink-500 */
+            --tw-ring-color: #ec4899;
             box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--tw-ring-color);
+        }
+
+        /* Hero image floating animation */
+        .hero-image-container {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* ++ MODIFIED ++ Hero tagline styling for both languages */
+        .hero-tagline {
+            line-height: 1.4;
+            /* Added for English */
+        }
+
+        [lang="ar"] .hero-tagline {
+            font-size: 2.1rem;
+            /* Slightly smaller font size */
+            line-height: 1.6;
+            /* Increased line height for better readability */
+        }
+
+        @media (min-width: 1024px) {
+            .hero-tagline {
+                line-height: 1.5;
+                /* Added for English on desktop */
+            }
+
+            [lang="ar"] .hero-tagline {
+                font-size: 2.8rem;
+            }
         }
     </style>
 </head>
+
 <body class="bg-white text-gray-800">
 
     <!-- Header -->
@@ -159,17 +262,33 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="#" class="wow animate__animated animate__fadeInDown">
-                    <img src="images/logo.png" alt="Bold & Blank Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo';">
+                    <img src="images/logo.png" alt="Bold & Blank Logo" class="h-12 w-auto"
+                        onerror="this.onerror=null;this.src='https://placehold.co/160x48/ffffff/333333?text=Logo';">
                 </a>
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-6 wow animate__animated animate__fadeInDown" data-wow-delay="0.2s">
-                    <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank" class="text-gray-600 transition-colors social-icon facebook-hover">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                <nav class="hidden md:flex items-center space-x-6 rtl:space-x-reverse wow animate__animated animate__fadeInDown"
+                    data-wow-delay="0.2s">
+                    <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank"
+                        class="text-gray-600 transition-colors social-icon facebook-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </a>
-                    <a href="https://www.instagram.com/boldblank/" target="_blank" class="text-gray-600 transition-colors social-icon instagram-hover">
-                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg>
+                    <a href="https://www.instagram.com/boldblank/" target="_blank"
+                        class="text-gray-600 transition-colors social-icon instagram-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </a>
-                    <a href="#contact-section" class="btn bg-gray-900 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-gray-800">
+                    <button id="lang-switcher" class="text-gray-600 font-bold hover:text-pink-500 transition-colors"
+                        data-lang-en="العربية" data-lang-ar="English">العربية</button>
+                    <a href="#contact-section"
+                        class="btn bg-gray-900 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-gray-800"
+                        data-lang-en="ORDER NOW !" data-lang-ar="اطلب الآن !">
                         ORDER NOW !
                     </a>
                 </nav>
@@ -183,18 +302,37 @@
                 </div>
             </div>
         </div>
-         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="absolute top-0 left-0 w-full bg-white/95 backdrop-blur-sm transform transition-all duration-500 ease-in-out max-h-0 opacity-0 overflow-hidden md:hidden">
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="absolute top-0 left-0 w-full bg-white/95 backdrop-blur-sm transform transition-all duration-500 ease-in-out max-h-0 opacity-0 overflow-hidden md:hidden">
             <div class="flex flex-col items-center justify-center min-h-screen space-y-8">
-                 <a href="#contact-section" class="btn bg-gray-900 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-800 w-3/4 text-center">
+                <!-- Language switcher moved inside the mobile menu -->
+                <button id="lang-switcher-mobile"
+                    class="btn bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-lg w-3/4 text-center"
+                    data-lang-en="العربية" data-lang-ar="English">
+                    العربية
+                </button>
+                <a href="#contact-section"
+                    class="btn bg-gray-900 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-800 w-3/4 text-center"
+                    data-lang-en="ORDER NOW !" data-lang-ar="اطلب الآن !">
                     ORDER NOW !
                 </a>
-                <div class="flex space-x-8">
-                    <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank" class="text-gray-600 transition-colors social-icon facebook-hover">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                <div class="flex space-x-8 rtl:space-x-reverse">
+                    <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank"
+                        class="text-gray-600 transition-colors social-icon facebook-hover">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </a>
-                    <a href="https://www.instagram.com/boldblank/" target="_blank" class="text-gray-600 transition-colors social-icon instagram-hover">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg>
+                    <a href="https://www.instagram.com/boldblank/" target="_blank"
+                        class="text-gray-600 transition-colors social-icon instagram-hover">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -202,25 +340,33 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-[#ffedf7] min-h-screen flex items-center pt-24 pb-12 md:py-0">
+    <section class="bg-[#ffedf7] min-h-screen flex items-center pt-24 pb-12 md:py-0 relative">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="flex flex-col-reverse md:flex-row items-center justify-center">
                 <!-- Left Part: Hero Photo -->
-                <div class="w-full md:w-1/2 flex justify-center p-4 wow animate__animated animate__fadeInLeft" data-wow-delay="0.5s">
+                <div class="w-full md:w-1/2 flex justify-center p-4 wow animate__animated animate__fadeInLeft hero-image-container"
+                    data-wow-delay="0.5s">
                     <div class="w-full max-w-md h-[70vh] rounded-lg shadow-2xl overflow-hidden">
-                        <img src="images/hero.png" 
-                             alt="Model wearing Bold & Blank clothing" 
-                             class="w-full h-full object-cover"
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x800/d1d5db/374151?text=Image+Not+Found';">
+                        <img src="images/hero.png" alt="Model wearing Bold & Blank clothing"
+                            class="w-full h-full object-cover"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x800/d1d5db/374151?text=Image+Not+Found';">
                     </div>
                 </div>
                 <!-- Right Part: Logo and Tagline -->
-                <div class="w-full md:w-1/2 flex flex-col items-center text-center md:pl-12 mb-10 md:mb-0 wow animate__animated animate__fadeInRight" data-wow-delay="0.2s">
+                <!-- ++ MODIFIED ++ Centered content for all screen sizes -->
+                <div class="w-full md:w-1/2 flex flex-col items-center text-center md:pl-12 rtl:md:pl-0 rtl:md:pr-12 mb-10 md:mb-0 wow animate__animated animate__fadeInRight"
+                    data-wow-delay="0.2s">
                     <img src="images/logo.png" alt="Bold & Blank Logo" class="w-56 md:w-48 h-auto mb-6"
-                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/ffffff/333333?text=Logo';">
-                    <p class="mt-4 text-4xl lg:text-5xl font-bold text-gray-900 max-w-md leading-tight">Where bold souls meet blank canvases.</p>
+                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/ffffff/333333?text=Logo';">
+                    <p class="mt-4 text-4xl lg:text-5xl font-bold text-gray-900 max-w-md hero-tagline"
+                        data-lang-en="Where bold souls meet blank canvases."
+                        data-lang-ar="حيث تلتقي الأرواح الجريئة بالقماش الأبيض.">Where bold souls meet blank canvases.
+                    </p>
                     <div class="mt-8 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
-                        <a href="#product-section" class="btn bg-transparent border-2 border-gray-900 text-gray-900 font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-900 hover:text-white">
+                        <!-- ++ MODIFIED ++ Added Arabic translation -->
+                        <a href="#product-section"
+                            class="btn bg-transparent border-2 border-gray-900 text-gray-900 font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-900 hover:text-white"
+                            data-lang-en="Check our deal" data-lang-ar="تفقد عروضنا">
                             Check our deal
                         </a>
                     </div>
@@ -230,25 +376,40 @@
     </section>
 
     <!-- Promotion Section -->
-    <section id="product-section" class="py-20 overflow-hidden">
+    <section id="product-section" class="py-20 overflow-hidden bg-white">
         <div class="container max-w-5xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center bg-gray-100 rounded-lg shadow-lg overflow-hidden wow animate__animated animate__fadeInUp" data-wow-duration="1s">
+            <div class="flex flex-col md:flex-row items-center bg-gray-100 rounded-lg shadow-lg overflow-hidden wow animate__animated animate__fadeInUp"
+                data-wow-duration="1s">
                 <!-- Left Part: Promotion Text -->
-                <div class="w-full md:w-1/2 p-8 md:p-12 text-center md:text-left">
-                    <h2 class="text-4xl font-bold text-gray-900 wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Get a Free Summer Bag!</h2>
-                    <p class="mt-4 text-gray-600 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">A special gift with every order over 800 LE. Limited time only.</p>
+                <div class="w-full md:w-1/2 p-8 md:p-12 text-center md:text-left rtl:md:text-right">
+                    <h2 class="text-4xl font-bold text-gray-900 wow animate__animated animate__fadeInUp"
+                        data-wow-delay="0.2s" data-lang-en="Get a Free Summer Bag!"
+                        data-lang-ar="احصل على حقيبة صيفية مجانية!">Get a Free Summer Bag!</h2>
+                    <p class="mt-4 text-gray-600 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s"
+                        data-lang-en="A special gift with every order over 800 LE. Limited time only."
+                        data-lang-ar="هدية خاصة مع كل طلب يزيد عن 800 جنيه. لفترة محدودة فقط.">A special gift with every
+                        order over 800 LE. Limited time only.</p>
                     <div class="wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
-                        <a href="#contact-section" class="btn mt-8 bg-gray-900 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-800 inline-block">
+                        <a href="#contact-section"
+                            class="btn mt-8 bg-gray-900 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-800 inline-block"
+                            data-lang-en="ORDER NOW !" data-lang-ar="اطلب الآن !">
                             ORDER NOW !
                         </a>
                     </div>
                 </div>
                 <!-- Right Part: Product Carousel -->
-                <div class="w-full md:w-1/2 p-4 flex justify-center items-center wow animate__animated animate__fadeIn" data-wow-delay="0.8s">
+                <div class="w-full md:w-1/2 p-4 flex justify-center items-center wow animate__animated animate__fadeIn"
+                    data-wow-delay="0.8s">
                     <div class="owl-carousel owl-theme w-full">
-                        <div class="item"><img src="images/product1.jpg" alt="Product 1" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/eab308/ffffff?text=Product+1';"></div>
-                        <div class="item"><img src="images/product2.jpg" alt="Product 2" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Product+2';"></div>
-                        <div class="item"><img src="images/product3.jpg" alt="Product 3" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/ec4899/ffffff?text=Product+3';"></div>
+                        <div class="item"><img src="images/product1.jpg" alt="Product 1" class="rounded-lg"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x400/eab308/ffffff?text=Product+1';">
+                        </div>
+                        <div class="item"><img src="images/product2.jpg" alt="Product 2" class="rounded-lg"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Product+2';">
+                        </div>
+                        <div class="item"><img src="images/product3.jpg" alt="Product 3" class="rounded-lg"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x400/ec4899/ffffff?text=Product+3';">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -258,49 +419,101 @@
     <!-- Contact Form Section -->
     <section id="contact-section" class="bg-[#ffedf7] py-20 overflow-hidden">
         <div class="container mx-auto px-6 lg:px-8 max-w-2xl text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">Ready to find your perfect fit?</h2>
-            <p class="text-gray-600 mb-8 wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Leave your details and our stylists will get in touch!</p>
-            <form id="contactForm" class="text-left wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4 wow animate__animated animate__fadeInUp"
+                data-wow-delay="0.1s" data-lang-en="Ready to find your perfect fit?"
+                data-lang-ar="هل أنت مستعد لتجد ما يناسبك؟">Ready to find your perfect fit?</h2>
+            <p class="text-gray-600 mb-8 wow animate__animated animate__fadeInUp" data-wow-delay="0.2s"
+                data-lang-en="Leave your details and our stylists will get in touch!"
+                data-lang-ar="اترك تفاصيلك وسيقوم خبراؤنا بالتواصل معك!">Leave your details and our stylists will get in
+                touch!</p>
+            <form id="contactForm" class="text-left rtl:text-right wow animate__animated animate__fadeInUp"
+                data-wow-delay="0.3s">
                 <!-- Standard Inputs -->
-                <div class="mb-4"><label for="name" class="block text-gray-700 font-medium mb-2">Name</label><input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" required></div>
-                <div class="mb-4"><label for="address" class="block text-gray-700 font-medium mb-2">Address</label><input type="text" id="address" name="address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" required></div>
-                <div class="mb-4"><label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label><input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" required></div>
-                
-                <!-- T-Shirt Color Selector -->
                 <div class="mb-4">
-                    <label class="block text-gray-700 font-medium mb-2">T-Shirt Color</label>
-                    <div class="flex space-x-3">
-                        <input type="hidden" name="tshirt-color" id="tshirt-color-input">
-                        <div class="color-swatch" data-group="tshirt" data-color="#e88793" style="background-color: #e88793;"></div>
-                        <div class="color-swatch" data-group="tshirt" data-color="#ffffff" style="background-color: #ffffff; border: 1px solid #ddd;"></div>
-                        <div class="color-swatch" data-group="tshirt" data-color="#5b8c8d" style="background-color: #5b8c8d;"></div>
+                    <label for="name" class="block text-gray-700 font-medium mb-2" data-lang-en="Name"
+                        data-lang-ar="الاسم">Name</label>
+                    <input type="text" id="name" name="name"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="address" class="block text-gray-700 font-medium mb-2" data-lang-en="Address"
+                        data-lang-ar="العنوان">Address</label>
+                    <input type="text" id="address" name="address"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-gray-700 font-medium mb-2" data-lang-en="Phone Number"
+                        data-lang-ar="رقم الهاتف">Phone Number</label>
+                    <input type="tel" id="phone" name="phone"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                        required>
+                </div>
+
+                <div class="md:flex md:space-x-8 rtl:space-x-reverse">
+                    <!-- T-Shirt Color Selector -->
+                    <div class="mb-4 md:w-1/2">
+                        <label class="block text-gray-700 font-medium mb-2" data-lang-en="Choose T-Shirt Color"
+                            data-lang-ar="اختر لون التيشيرت">Choose T-Shirt Color</label>
+                        <div class="flex space-x-3 rtl:space-x-reverse">
+                            <input type="hidden" name="tshirt-color" id="tshirt-color-input">
+                            <div class="color-swatch" data-group="tshirt" data-color="#e88793"
+                                style="background-color: #e88793;"></div>
+                            <div class="color-swatch" data-group="tshirt" data-color="#ffffff"
+                                style="background-color: #ffffff; border: 1px solid #ddd;"></div>
+                            <div class="color-swatch" data-group="tshirt" data-color="#5b8c8d"
+                                style="background-color: #5b8c8d;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Bag Color Selector -->
+                    <div class="mb-4 md:w-1/2">
+                        <label class="block text-gray-700 font-medium mb-2" data-lang-en="Choose a Bag"
+                            data-lang-ar="اختر حقيبة">Choose a Bag</label>
+                        <div class="flex space-x-3 rtl:space-x-reverse">
+                            <input type="hidden" name="bag-color" id="bag-color-input">
+                            <img src="https://placehold.co/100x100/e88793/ffffff?text=Bag+1" alt="Pink Bag"
+                                class="color-swatch" data-group="bag" data-color="pink-bag">
+                            <img src="https://placehold.co/100x100/ffffff/333333?text=Bag+2" alt="White Bag"
+                                class="color-swatch" data-group="bag" data-color="white-bag"
+                                style="border: 1px solid #ddd;">
+                            <img src="https://placehold.co/100x100/5b8c8d/ffffff?text=Bag+3" alt="Teal Bag"
+                                class="color-swatch" data-group="bag" data-color="teal-bag">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Bag Color Selector -->
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium mb-2">Bag Color</label>
-                    <div class="flex space-x-3">
-                        <input type="hidden" name="bag-color" id="bag-color-input">
-                        <div class="color-swatch" data-group="bag" data-color="#e88793" style="background-color: #e88793;"></div>
-                        <div class="color-swatch" data-group="bag" data-color="#ffffff" style="background-color: #ffffff; border: 1px solid #ddd;"></div>
-                        <div class="color-swatch" data-group="bag" data-color="#5b8c8d" style="background-color: #5b8c8d;"></div>
-                    </div>
+                <div class="text-center mt-6">
+                    <button type="submit" class="btn btn-gradient font-bold py-3 px-12 rounded-lg shadow-md"
+                        data-lang-en="ORDER NOW !" data-lang-ar="اطلب الآن !">ORDER NOW !</button>
                 </div>
-
-                <div class="text-center mt-6"><button type="submit" class="btn bg-pink-500 text-white font-bold py-3 px-12 rounded-lg shadow-md hover:bg-pink-600">Send</button></div>
             </form>
-            <div id="formMessage" class="mt-4 text-green-600 font-medium"></div>
+            <div id="formMessage" class="mt-4 font-medium h-6"></div>
         </div>
     </section>
 
     <!-- Social Footer -->
     <footer class="bg-[#ffedf7] text-gray-800 py-10">
         <div class="container mx-auto px-6 lg:px-8 text-center">
-            <h3 class="text-3xl font-bold mb-4 wow animate__animated animate__fadeIn" data-wow-delay="0.2s">Stay In Touch</h3>
-            <div class="flex justify-center space-x-6 wow animate__animated animate__fadeIn" data-wow-delay="0.4s">
-                <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank" class="text-gray-600 transition-colors social-icon facebook-hover"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
-                <a href="https://www.instagram.com/boldblank/" target="_blank" class="text-gray-600 transition-colors social-icon instagram-hover"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg></a>
+            <h3 class="text-3xl font-bold mb-4 wow animate__animated animate__fadeIn" data-wow-delay="0.2s"
+                data-lang-en="Stay In Touch" data-lang-ar="ابق على تواصل">Stay In Touch</h3>
+            <div class="flex justify-center space-x-6 rtl:space-x-reverse wow animate__animated animate__fadeIn"
+                data-wow-delay="0.4s">
+                <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank"
+                    class="text-gray-600 transition-colors social-icon facebook-hover"><svg class="w-8 h-8"
+                        fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
+                    </svg></a>
+                <a href="https://www.instagram.com/boldblank/" target="_blank"
+                    class="text-gray-600 transition-colors social-icon instagram-hover"><svg class="w-8 h-8"
+                        fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"
+                            clip-rule="evenodd" />
+                    </svg></a>
             </div>
         </div>
     </footer>
@@ -308,8 +521,11 @@
     <!-- Copyright Footer -->
     <footer class="bg-[#ffedf7] text-gray-700 py-6 border-t border-pink-200">
         <div class="container mx-auto px-6 lg:px-8 text-center">
-            <p>&copy; 2024 All Rights Reserved - Bold & Blank</p>
-            <p class="mt-2 text-sm">Made with love by El-Qammash</p>
+            <p data-lang-en="© 2024 All Rights Reserved - Bold & Blank"
+                data-lang-ar="© 2024 جميع الحقوق محفوظة - بولد أند بلانك">&copy; 2024 All Rights Reserved - Bold & Blank
+            </p>
+            <p class="mt-2 text-sm" data-lang-en="Made with love by El-Qammash"
+                data-lang-ar="Made with love by El-Qammash">Made with love by El-Qammash</p>
         </div>
     </footer>
 
@@ -325,23 +541,25 @@
         new WOW().init();
 
         // Initialize Owl Carousel
-        $(document).ready(function(){
-          $(".owl-carousel").owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 10,
-            nav: true,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true
-          });
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplaySpeed: 1000,
+                autoplayTimeout: 1000,
+                autoplayHoverPause: true,
+                rtl: document.documentElement.dir === 'rtl'
+            });
         });
 
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         const toggleMenu = () => {
             menuBtn.classList.toggle('open');
             mobileMenu.classList.toggle('max-h-0');
@@ -351,10 +569,13 @@
 
         menuBtn.addEventListener('click', toggleMenu);
 
-        // Close menu when a link is clicked
-        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        // Close menu when a link OR button inside it is clicked
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a, #mobile-menu button');
         mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                if (e.currentTarget.id === 'lang-switcher-mobile') {
+                    return;
+                }
                 if (menuBtn.classList.contains('open')) {
                     toggleMenu();
                 }
@@ -368,48 +589,92 @@
                 const group = swatch.dataset.group;
                 const color = swatch.dataset.color;
 
-                // Update hidden input
                 document.getElementById(`${group}-color-input`).value = color;
-
-                // Update visual selection
                 document.querySelectorAll(`.color-swatch[data-group="${group}"]`).forEach(s => s.classList.remove('selected'));
                 swatch.classList.add('selected');
             });
         });
 
-
         // Simple form submission handler
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
 
-        contactForm.addEventListener('submit', function(event) {
+        contactForm.addEventListener('submit', function (event) {
             event.preventDefault();
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
+            const currentLang = document.documentElement.lang;
 
-            // Check if colors are selected
+            formMessage.textContent = '';
+            formMessage.classList.remove('text-red-600', 'text-green-600');
+
             if (!data['tshirt-color']) {
-                alert('Please select a T-Shirt color.');
+                formMessage.textContent = currentLang === 'ar' ? 'الرجاء اختيار لون التيشيرت.' : 'Please select a T-Shirt color.';
+                formMessage.classList.add('text-red-600');
                 return;
             }
             if (!data['bag-color']) {
-                alert('Please select a Bag color.');
+                formMessage.textContent = currentLang === 'ar' ? 'الرجاء اختيار الحقيبة.' : 'Please select a Bag color.';
+                formMessage.classList.add('text-red-600');
                 return;
             }
-            
+
             console.log('Form Submitted:', data);
-            formMessage.textContent = 'Thank you! We will be in touch soon.';
-            
-            // Reset form and color selections
+
+            formMessage.textContent = currentLang === 'ar' ? 'شكراً لك! سنتواصل معك قريباً.' : 'Thank you! We will be in touch soon.';
+            formMessage.classList.add('text-green-600');
+
             contactForm.reset();
             document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
 
             setTimeout(() => {
                 formMessage.textContent = '';
+                formMessage.classList.remove('text-green-600');
             }, 5000);
         });
+
+        // Language Switcher Logic
+        const langSwitcherDesktop = document.getElementById('lang-switcher');
+        const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
+        const htmlEl = document.documentElement;
+
+        function switchLanguage() {
+            const elementsToTranslate = document.querySelectorAll('[data-lang-en]');
+
+            elementsToTranslate.forEach(el => el.style.opacity = '0');
+
+            setTimeout(() => {
+                const currentLang = htmlEl.lang;
+                const newLang = currentLang === 'en' ? 'ar' : 'en';
+
+                htmlEl.lang = newLang;
+                htmlEl.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+
+                elementsToTranslate.forEach(el => {
+                    const text = (newLang === 'ar') ? el.dataset.langAr : el.dataset.langEn;
+                    el.textContent = text;
+                });
+
+                $('.owl-carousel').trigger('destroy.owl.carousel');
+                $(".owl-carousel").owlCarousel({
+                    items: 1, loop: true, margin: 10, nav: true, dots: true,
+                    autoplay: true, autoplaySpeed: 1000,
+                    autoplayTimeout: 1000, autoplayHoverPause: true,
+                    rtl: newLang === 'ar'
+                });
+
+                elementsToTranslate.forEach(el => el.style.opacity = '1');
+
+                if (menuBtn.classList.contains('open')) {
+                    toggleMenu();
+                }
+            }, 300);
+        }
+
+        langSwitcherDesktop.addEventListener('click', switchLanguage);
+        langSwitcherMobile.addEventListener('click', switchLanguage);
     </script>
 
 </body>
-</html>
 
+</html>
