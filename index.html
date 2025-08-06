@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,145 +10,16 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Animate.css for WOW.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Custom Font (Poppins & Cairo for Arabic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Cairo:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* Custom styles for typography and layout */
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        html[dir="rtl"] body {
-            font-family: 'Cairo', sans-serif;
-        }
-        .btn {
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        /* Social Icon Hover Effects */
-        .social-icon {
-            transition: transform 0.3s ease;
-        }
-        .social-icon:hover {
-            transform: scale(1.15);
-        }
-        .facebook-hover:hover {
-            color: #1877F2;
-        }
-        .instagram-hover:hover {
-            color: #d6249f; /* Fallback color */
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* Hamburger Menu Animation */
-        .hamburger {
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-            transition: all 0.25s;
-            position: relative;
-        }
-        .hamburger-top,
-        .hamburger-middle,
-        .hamburger-bottom {
-            position: absolute;
-            width: 24px;
-            height: 3px;
-            top: 0;
-            left: 0;
-            background: #1f2937; /* gray-800 */
-            border-radius: 2px;
-            transform: rotate(0);
-            transition: all 0.5s;
-        }
-        .hamburger-middle {
-            transform: translateY(7px);
-        }
-        .hamburger-bottom {
-            transform: translateY(14px);
-        }
-        .open .hamburger-top {
-            transform: rotate(45deg) translateY(6px) translateX(6px);
-        }
-        .open .hamburger-middle {
-            display: none;
-        }
-        .open .hamburger-bottom {
-            transform: rotate(-45deg) translateY(6px) translateX(-6px);
-        }
-        /* Product Gallery */
-        .thumbnail {
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-        .thumbnail.active {
-            border-color: #ec4899; /* pink-500 */
-        }
-        .main-image-container {
-            overflow: hidden;
-            position: relative;
-        }
-        #main-product-image {
-            transition: transform 0.3s ease, opacity 0.3s ease-in-out;
-        }
-        /* Color & Size Swatch Styling */
-        .option-swatch {
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            border: 1px solid #d1d5db; /* gray-300 */
-        }
-        .option-swatch.selected {
-            border-color: #1f2937; /* gray-800 */
-            background-color: #1f2937;
-            color: #ffffff;
-        }
-        .color-swatch-product {
-             width: 32px;
-            height: 32px;
-            border-radius: 50%;
-        }
-        .color-swatch-product.selected {
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1f2937;
-        }
-        /* Scrollbar Hiding Utility */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        /* Smooth Language Transition */
-        .lang-translatable {
-            transition: opacity 0.2s ease-in-out;
-        }
-        .lang-translatable.fade-out {
-            opacity: 0;
-        }
-        /* Arabic Tagline Font Size Adjustment */
-        html[dir="rtl"] #hero-tagline {
-            font-size: 2.1rem; /* Slightly smaller than text-4xl */
-            line-height: 1.5;
-        }
-        @media (min-width: 1024px) { /* lg breakpoint */
-            html[dir="rtl"] #hero-tagline {
-                font-size: 2.6rem; /* Slightly smaller than lg:text-5xl */
-            }
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Cairo:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="bg-white text-gray-800">
 
     <!-- Header -->
@@ -156,18 +28,35 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="#" class="wow animate__animated animate__fadeInDown">
-                    <img src="images/logo.png" alt="Bold & Blank Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo';">
+                    <img src="images/logo.png" alt="Bold & Blank Logo"
+                        class="h-10 w-auto"
+                        onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo';">
                 </a>
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-6 rtl:space-x-reverse wow animate__animated animate__fadeInDown" data-wow-delay="0.2s">
+                <nav class="hidden md:flex items-center space-x-6 rtl:space-x-reverse wow animate__animated animate__fadeInDown"
+                    data-wow-delay="0.2s">
                     <button id="lang-toggle-desktop" class="font-semibold text-gray-700 hover:text-pink-500">AR</button>
-                    <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank" class="text-gray-600 transition-colors social-icon facebook-hover">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank"
+                        class="text-gray-600 social-icon facebook-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </a>
-                    <a href="https://www.instagram.com/boldblank/" target="_blank" class="text-gray-600 transition-colors social-icon instagram-hover">
-                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg>
+                    <a href="https://www.instagram.com/boldblank/" target="_blank"
+                        class="text-gray-600 social-icon instagram-hover">
+                        <!-- Updated Instagram Icon -->
+                        <svg class="w-6 h-6 instagram-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                        </svg>
                     </a>
-                    <a href="#product-section" class="btn bg-gray-900 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-gray-800 lang-translatable" data-lang-en="ORDER NOW !" data-lang-ar="اطلب الآن!">ORDER NOW !</a>
+                    <a href="#product-section"
+                        class="btn bg-gray-900 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-gray-800 lang-translatable"
+                        data-lang-en="ORDER NOW !" data-lang-ar="اطلب الآن!">ORDER NOW !</a>
                 </nav>
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
@@ -179,17 +68,33 @@
                 </div>
             </div>
         </div>
-         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="absolute top-0 left-0 w-full bg-white/95 backdrop-blur-sm transform transition-all duration-500 ease-in-out max-h-0 opacity-0 overflow-hidden md:hidden">
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="absolute top-0 left-0 w-full bg-white/95 backdrop-blur-sm transform transition-all duration-500 ease-in-out max-h-0 opacity-0 overflow-hidden md:hidden">
             <div class="flex flex-col items-center justify-center min-h-screen space-y-8">
-                 <a href="#product-section" class="btn bg-gray-900 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-800 w-3/4 text-center lang-translatable" data-lang-en="ORDER NOW !" data-lang-ar="اطلب الآن!">ORDER NOW !</a>
-                 <button id="lang-toggle-mobile" class="font-semibold text-gray-700 hover:text-pink-500 text-2xl">AR</button>
+                <a href="#product-section"
+                    class="btn bg-gray-900 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-800 w-3/4 text-center lang-translatable"
+                    data-lang-en="ORDER NOW !" data-lang-ar="اطلب الآن!">ORDER NOW !</a>
+                <button id="lang-toggle-mobile"
+                    class="font-semibold text-gray-700 hover:text-pink-500 text-2xl">AR</button>
                 <div class="flex space-x-8 rtl:space-x-reverse">
-                    <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank" class="text-gray-600 transition-colors social-icon facebook-hover">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank"
+                        class="text-gray-600 social-icon facebook-hover">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </a>
-                    <a href="https://www.instagram.com/boldblank/" target="_blank" class="text-gray-600 transition-colors social-icon instagram-hover">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg>
+                    <a href="https://www.instagram.com/boldblank/" target="_blank"
+                        class="text-gray-600 social-icon instagram-hover">
+                        <!-- Updated Instagram Icon -->
+                        <svg class="w-10 h-10 instagram-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -201,21 +106,29 @@
         <div class="container mx-auto px-6 lg:px-8">
             <div class="flex flex-col-reverse md:flex-row items-center justify-center">
                 <!-- Left Part: Hero Photo -->
-                <div class="w-full md:w-1/2 flex justify-center p-4 wow animate__animated animate__fadeInLeft" data-wow-delay="0.5s">
+                <div class="w-full md:w-1/2 flex justify-center p-4 wow animate__animated animate__fadeInLeft"
+                    data-wow-delay="0.5s">
                     <div class="w-full max-w-md h-[70vh] rounded-lg shadow-2xl overflow-hidden">
-                        <img src="" 
-                             alt="Model wearing Bold & Blank clothing" 
-                             class="w-full h-full object-cover"
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x800/d1d5db/374151?text=Image+Not+Found';">
+                        <img id="main-hero-image" src="https://placehold.co/600x800/d1d5db/374151?text=Image+Not+Found"
+                            alt="Model wearing Bold & Blank clothing" class="w-full h-full object-cover"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x800/d1d5db/374151?text=Image+Not+Found';">
                     </div>
                 </div>
                 <!-- Right Part: Logo and Tagline -->
-                <div class="w-full md:w-1/2 flex flex-col items-center text-center md:pl-12 rtl:md:pl-0 rtl:md:pr-12 mb-10 md:mb-0 wow animate__animated animate__fadeInRight" data-wow-delay="0.2s">
-                    <img src="images/logo.png" alt="Bold & Blank Logo" class="w-56 md:w-48 h-auto mb-6"
-                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/ffffff/333333?text=Logo';">
-                    <p id="hero-tagline" class="mt-4 text-4xl lg:text-5xl font-bold text-gray-900 max-w-md leading-tight lang-translatable" data-lang-en="Where bold souls meet blank canvases." data-lang-ar="حيث تلتقي الأرواح الجريئة باللوحات الفارغة.">Where bold souls meet blank canvases.</p>
+                <div class="w-full md:w-1/2 flex flex-col items-center text-center md:pl-12 rtl:md:pl-0 rtl:md:pr-12 mb-10 md:mb-0 wow animate__animated animate__fadeInRight"
+                    data-wow-delay="0.2s">
+                    <img src="images/logo.png" alt="Bold & Blank Logo"
+                        class="w-56 md:w-48 h-auto mb-6"
+                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/ffffff/333333?text=Logo';">
+                    <p id="hero-tagline"
+                        class="mt-4 text-4xl lg:text-5xl font-bold text-gray-900 max-w-md leading-tight lang-translatable"
+                        data-lang-en="Where bold souls meet blank canvases."
+                        data-lang-ar="حيث تلتقي الأرواح الجريئة باللوحات الفارغة.">Where bold souls meet blank canvases.
+                    </p>
                     <div class="mt-8 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
-                        <a href="#product-section" class="btn bg-transparent border-2 border-gray-900 text-gray-900 font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-900 hover:text-white lang-translatable" data-lang-en="Check our deal" data-lang-ar="اكتشف عروضنا">
+                        <a href="#product-section"
+                            class="btn bg-transparent border-2 border-gray-900 text-gray-900 font-bold py-3 px-8 rounded-lg shadow-md hover:bg-gray-900 hover:text-white lang-translatable"
+                            data-lang-en="Check our deal" data-lang-ar="اكتشف عروضنا">
                             Check our deal
                         </a>
                     </div>
@@ -234,82 +147,131 @@
                     <div class="order-2 md:order-1 flex md:flex-col items-center gap-2 justify-center">
                         <!-- Left Arrow (Mobile) -->
                         <button id="thumb-scroll-left" class="text-gray-600 hover:text-black p-1 md:hidden">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7"></path>
+                            </svg>
                         </button>
                         <!-- Up Arrow (Desktop) -->
                         <button id="thumb-scroll-up" class="text-gray-600 hover:text-black p-1 hidden md:block">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7">
+                                </path>
+                            </svg>
                         </button>
-                        
-                        <div id="thumbnail-container" class="flex md:flex-col gap-2 overflow-x-auto md:overflow-x-hidden md:overflow-y-auto scrollbar-hide w-60 md:w-auto md:max-h-96">
+                        <div id="thumbnail-container"
+                            class="flex md:flex-col gap-2 overflow-x-auto md:overflow-x-hidden md:overflow-y-auto scrollbar-hide w-60 md:w-auto md:max-h-96">
                             <!-- Thumbnails will be dynamically inserted here -->
                         </div>
-                        
                         <!-- Right Arrow (Mobile) -->
                         <button id="thumb-scroll-right" class="text-gray-600 hover:text-black p-1 md:hidden">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
                         </button>
                         <!-- Down Arrow (Desktop) -->
                         <button id="thumb-scroll-down" class="text-gray-600 hover:text-black p-1 hidden md:block">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                     </div>
                     <!-- Main Image -->
-                    <div class="order-1 md:order-2 flex-1 main-image-container rounded-lg shadow-lg">
-                        <img id="main-product-image" src="https://placehold.co/600x750/cccccc/333333?text=Product+Image" alt="Main Product Image" class="w-full h-full max-h-[75vh] object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x750/cccccc/333333?text=Product+Image';">
+                    <div class="order-1 md:order-2 flex-1 main-image-container rounded-lg shadow-lg image-sticky">
+                        <img id="main-product-image" src="https://placehold.co/600x750/cccccc/333333?text=Product+Image"
+                            alt="Main Product Image" class="w-full h-full max-h-[75vh] object-cover rounded-lg"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x750/cccccc/333333?text=Product+Image';">
                     </div>
                 </div>
 
                 <!-- Product Details & Order Form -->
-                <div class="w-full lg:w-1/2 rtl:text-right wow animate__animated animate__fadeInRight" data-wow-delay="0.2s">
-                    <h1 class="text-3xl md:text-4xl font-bold lang-translatable" data-lang-en="Washed Oversized T-Shirt" data-lang-ar="تيشيرت واسع مغسول">Washed Oversized T-Shirt</h1>
-                    <p class="text-2xl text-pink-500 my-4">450.00 <span class="lang-translatable" data-lang-en="EGP" data-lang-ar="جنيه">EGP</span></p>
+                <div class="w-full lg:w-1/2 rtl:text-right wow animate__animated animate__fadeInRight"
+                    data-wow-delay="0.2s">
+                    <h1 class="text-3xl md:text-4xl font-bold lang-translatable" data-lang-en="Oversized T-Shirt"
+                        data-lang-ar="تيشيرت واسع">Oversized T-Shirt</h1>
+                    <p class="text-2xl my-4">800.00 <span class="lang-translatable" data-lang-en="EGP"
+                            data-lang-ar="جنيه">EGP</span></p>
 
                     <!-- Color Selector -->
                     <div class="mb-6">
-                        <label class="block text-gray-700 font-medium mb-2 lang-translatable" data-lang-en="Color" data-lang-ar="اللون">Color</label>
+                        <label class="block text-gray-700 font-medium mb-2 lang-translatable" data-lang-en="Color"
+                            data-lang-ar="اللون">Color</label>
                         <div class="flex space-x-3 rtl:space-x-reverse" id="product-color-selector">
-                            <div class="option-swatch color-swatch-product" data-group="product-color" data-value="Black" style="background-color: #2d2d2d;"></div>
-                            <div class="option-swatch color-swatch-product" data-group="product-color" data-value="Pink" style="background-color: #e88793;"></div>
-                            <div class="option-swatch color-swatch-product" data-group="product-color" data-value="Green" style="background-color: #5b8c8d;"></div>
+                            <div class="option-swatch color-swatch-product rounded-full border-2"
+                                data-group="product-color" data-value="Black" style="background-color: #2d2d2d;"></div>
+                            <div class="option-swatch color-swatch-product rounded-full border-2"
+                                data-group="product-color" data-value="Pink" style="background-color: #e88793;"></div>
+                            <div class="option-swatch color-swatch-product rounded-full border-2"
+                                data-group="product-color" data-value="Green" style="background-color: #5b8c8d;"></div>
                         </div>
                     </div>
 
                     <!-- Size Selector -->
                     <div class="mb-6">
-                        <label class="block text-gray-700 font-medium mb-2 lang-translatable" data-lang-en="Size" data-lang-ar="المقاس">Size</label>
+                        <label class="block text-gray-700 font-medium mb-2 lang-translatable" data-lang-en="Size"
+                            data-lang-ar="المقاس">Size</label>
                         <div class="flex flex-wrap gap-2" id="product-size-selector">
-                            <button class="option-swatch px-4 py-2 rounded-md" data-group="product-size" data-value="S">S</button>
-                            <button class="option-swatch px-4 py-2 rounded-md" data-group="product-size" data-value="M">M</button>
-                            <button class="option-swatch px-4 py-2 rounded-md" data-group="product-size" data-value="L">L</button>
-                            <button class="option-swatch px-4 py-2 rounded-md" data-group="product-size" data-value="XL">XL</button>
-                            <button class="option-swatch px-4 py-2 rounded-md" data-group="product-size" data-value="XXL">XXL</button>
+                            <button class="option-swatch px-4 py-2 rounded-md font-semibold" data-group="product-size"
+                                data-value="S">S</button>
+                            <button class="option-swatch px-4 py-2 rounded-md font-semibold" data-group="product-size"
+                                data-value="M">M</button>
+                            <button class="option-swatch px-4 py-2 rounded-md font-semibold" data-group="product-size"
+                                data-value="L">L</button>
+                            <button class="option-swatch px-4 py-2 rounded-md font-semibold" data-group="product-size"
+                                data-value="XL">XL</button>
+                            <button class="option-swatch px-4 py-2 rounded-md font-semibold" data-group="product-size"
+                                data-value="XXL">XXL</button>
                         </div>
                     </div>
-                    
-                    <!-- Integrated Order Form -->
-                     <form id="contactForm" class="mt-8">
-                         <div class="mb-4">
-                             <label for="name" class="block text-gray-700 font-medium mb-2 lang-translatable" data-lang-en="Name" data-lang-ar="الاسم">Name</label>
-                             <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" required>
-                         </div>
-                         <div class="mb-4">
-                             <label for="address" class="block text-gray-700 font-medium mb-2 lang-translatable" data-lang-en="Address" data-lang-ar="العنوان">Address</label>
-                             <input type="text" id="address" name="address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" required>
-                         </div>
-                         <div class="mb-4">
-                             <label for="phone" class="block text-gray-700 font-medium mb-2 lang-translatable" data-lang-en="Phone Number" data-lang-ar="رقم الهاتف">Phone Number</label>
-                             <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" required>
-                         </div>
-                         <div class="mb-4">
-                            <label for="phone2" class="block text-gray-700 font-medium mb-2 lang-translatable" data-lang-en="Second Phone Number (Optional)" data-lang-ar="رقم هاتف ثاني (اختياري)">Second Phone Number (Optional)</label>
-                            <input type="tel" id="phone2" name="phone2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+
+                    <!-- Gift Bag Selector (New) -->
+                    <div class="mb-6 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+                        <label class="block text-gray-700 font-medium mb-2 lang-translatable"
+                            data-lang-en="Pick Your Gift!" data-lang-ar="اختر هديتك">Pick Your Gift!</label>
+                        <div class="grid grid-cols-5 gap-2" id="gift-bag-selector">
+                            <!-- Gift Bag options will be dynamically inserted here -->
                         </div>
-                         <div class="mt-6">
-                             <button type="submit" class="btn w-full bg-gray-900 text-white font-bold py-3 rounded-lg shadow-md hover:bg-gray-800 lang-translatable" data-lang-en="ORDER NOW!" data-lang-ar="اطلب الآن!">ORDER NOW!</button>
-                         </div>
-                     </form>
-                     <div id="formMessage" class="mt-4 text-green-600 font-medium text-center"></div>
+                    </div>
+
+                    <!-- Integrated Order Form -->
+                    <form id="contactForm" class="mt-8">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2 lang-translatable"
+                                data-lang-en="Name" data-lang-ar="الاسم">Name</label>
+                            <input type="text" id="name" name="name"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="address" class="block text-gray-700 font-medium mb-2 lang-translatable"
+                                data-lang-en="Address" data-lang-ar="العنوان">Address</label>
+                            <input type="text" id="address" name="address"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2 lang-translatable"
+                                data-lang-en="Phone Number" data-lang-ar="رقم الهاتف">Phone Number</label>
+                            <input type="tel" id="phone" name="phone"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone2" class="block text-gray-700 font-medium mb-2 lang-translatable"
+                                data-lang-en="Second Phone Number (Optional)"
+                                data-lang-ar="رقم هاتف ثاني (اختياري)">Second Phone Number (Optional)</label>
+                            <input type="tel" id="phone2" name="phone2"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        </div>
+                        <div class="mt-6">
+                            <button type="submit"
+                                class="btn w-full bg-gray-900 text-white font-bold py-3 rounded-lg shadow-md hover:bg-gray-800 lang-translatable"
+                                data-lang-en="ORDER NOW!" data-lang-ar="اطلب الآن!">ORDER NOW!</button>
+                        </div>
+                    </form>
+                    <div id="formMessage" class="mt-4 text-green-600 font-medium text-center"></div>
                 </div>
             </div>
         </div>
@@ -318,10 +280,25 @@
     <!-- Social Footer -->
     <footer class="bg-[#ffedf7] text-gray-800 py-10">
         <div class="container mx-auto px-6 lg:px-8 text-center">
-            <h3 class="text-3xl font-bold mb-4 wow animate__animated animate__fadeIn lang-translatable" data-wow-delay="0.2s" data-lang-en="Stay In Touch" data-lang-ar="ابق على تواصل">Stay In Touch</h3>
-            <div class="flex justify-center space-x-6 rtl:space-x-reverse wow animate__animated animate__fadeIn" data-wow-delay="0.4s">
-                <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank" class="text-gray-600 transition-colors social-icon facebook-hover"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
-                <a href="https://www.instagram.com/boldblank/" target="_blank" class="text-gray-600 transition-colors social-icon instagram-hover"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 3.808s-.012 2.74-.06 3.808c-.048 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-3.808.06s-2.74-.012-3.808-.06c-1.064-.048-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 14.74 2 14.4 2 12s.013-2.74.06-3.808c.048-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.92 2.013 9.27 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.06-1.064.049-1.644.21-2.096.403a2.913 2.913 0 00-1.064 1.064c-.194.452-.354 1.032-.403 2.096-.049 1.023-.06 1.351-.06 3.807s.011 2.784.06 3.808c.049 1.064.209 1.644.403 2.096a2.913 2.913 0 001.064 1.064c.452.194 1.032.354 2.096.403 1.023.049 1.351.06 3.807.06h.468c2.456 0 2.784-.011 3.807-.06 1.064-.049 1.644-.21 2.096-.403a2.913 2.913 0 001.064-1.064c.194-.452-.354-1.032.403-2.096.049-1.023.06-1.351.06-3.807s-.011-2.784-.06-3.808c-.049-1.064-.209-1.644-.403-2.096a2.913 2.913 0 00-1.064-1.064c-.452-.194-1.032-.354-2.096-.403C15.14 3.813 14.81 3.802 12.234 3.802zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg></a>
+            <h3 class="text-3xl font-bold mb-4 wow animate__animated animate__fadeIn lang-translatable"
+                data-wow-delay="0.2s" data-lang-en="Stay In Touch" data-lang-ar="ابق على تواصل">Stay In Touch</h3>
+            <div class="flex justify-center space-x-6 rtl:space-x-reverse wow animate__animated animate__fadeIn"
+                data-wow-delay="0.4s">
+                <a href="https://www.facebook.com/share/15Ys9MZU3e/" target="_blank"
+                    class="text-gray-600 social-icon facebook-hover"><svg class="w-8 h-8" fill="currentColor"
+                        viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
+                    </svg></a>
+                <a href="https://www.instagram.com/boldblank/" target="_blank"
+                    class="text-gray-600 social-icon instagram-hover"><svg class="w-8 h-8 instagram-icon-svg"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                    </svg></a>
             </div>
         </div>
     </footer>
@@ -329,8 +306,9 @@
     <!-- Copyright Footer -->
     <footer class="bg-[#ffedf7] text-gray-700 py-6 border-t border-pink-200">
         <div class="container mx-auto px-6 lg:px-8 text-center">
-            <p class="lang-translatable" data-lang-en="© 2024 All Rights Reserved - Bold & Blank" data-lang-ar="© 2024 جميع الحقوق محفوظة - بولد أند بلانك">© 2024 All Rights Reserved - Bold & Blank</p>
-            <p class="mt-2 text-sm">Made with ♥ by ASGARD</p>
+            <p class="lang-translatable" data-lang-en="© 2025 All Rights Reserved - Bold & Blank"
+                data-lang-ar="© 2025 جميع الحقوق محفوظة - بولد أند بلانك">© 2025 All Rights Reserved - Bold & Blank</p>
+            <p class="mt-2 text-sm">Made With ♥ By ASGARD</p>
         </div>
     </footer>
 
@@ -339,188 +317,8 @@
     <!-- WOW.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 
-    <script>
-        // Initialize WOW.js
-        new WOW().init();
 
-        // --- DATA ---
-        const imageSets = {
-            'Black': ['https://placehold.co/600x750/2d2d2d/ffffff?text=Black+1', 'https://placehold.co/600x750/2d2d2d/ffffff?text=Black+2', 'https://placehold.co/600x750/2d2d2d/ffffff?text=Black+3', 'https://placehold.co/600x750/2d2d2d/ffffff?text=Black+4', 'https://placehold.co/600x750/2d2d2d/ffffff?text=Black+5'],
-            'Pink': ['https://placehold.co/600x750/e88793/ffffff?text=Pink+1', 'https://placehold.co/600x750/e88793/ffffff?text=Pink+2', 'https://placehold.co/600x750/e88793/ffffff?text=Pink+3', 'https://placehold.co/600x750/e88793/ffffff?text=Pink+4', 'https://placehold.co/600x750/e88793/ffffff?text=Pink+5'],
-            'Green': ['https://placehold.co/600x750/5b8c8d/ffffff?text=Green+1', 'https://placehold.co/600x750/5b8c8d/ffffff?text=Green+2', 'https://placehold.co/600x750/5b8c8d/ffffff?text=Green+3', 'https://placehold.co/600x750/5b8c8d/ffffff?text=Green+4', 'https://placehold.co/600x750/5b8c8d/ffffff?text=Green+5']
-        };
-
-        let currentLanguage = localStorage.getItem('language') || 'en';
-        let currentImageIndex = 0;
-
-        // --- DOM ELEMENTS ---
-        const thumbnailContainer = document.getElementById('thumbnail-container');
-        const mainProductImage = document.getElementById('main-product-image');
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const langToggleDesktop = document.getElementById('lang-toggle-desktop');
-        const langToggleMobile = document.getElementById('lang-toggle-mobile');
-        const contactForm = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-
-        // --- FUNCTIONS ---
-        const setLanguage = (lang, isInitialLoad = false) => {
-            currentLanguage = lang;
-            localStorage.setItem('language', lang);
-            document.documentElement.lang = lang;
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-
-            const elements = document.querySelectorAll('[data-lang-en]');
-            
-            const updateText = () => {
-                elements.forEach(el => {
-                    // Correctly access dataset properties (camelCase version of the attribute)
-                    if (el.dataset.langEn && el.dataset.langAr) {
-                         el.innerText = lang === 'ar' ? el.dataset.langAr : el.dataset.langEn;
-                    }
-                    el.classList.remove('fade-out');
-                });
-            };
-
-            if (isInitialLoad) {
-                updateText();
-            } else {
-                elements.forEach(el => el.classList.add('fade-out'));
-                setTimeout(updateText, 200);
-            }
-
-            langToggleDesktop.innerText = lang === 'en' ? 'AR' : 'EN';
-            langToggleMobile.innerText = lang === 'en' ? 'AR' : 'EN';
-        };
-
-        const toggleMenu = () => {
-            menuBtn.classList.toggle('open');
-            mobileMenu.classList.toggle('max-h-0');
-            mobileMenu.classList.toggle('max-h-screen');
-            mobileMenu.classList.toggle('opacity-0');
-        };
-
-        const updateThumbnailGallery = (color) => {
-            const images = imageSets[color] || [];
-            thumbnailContainer.innerHTML = '';
-            currentImageIndex = 0;
-            images.forEach((src, index) => {
-                const img = document.createElement('img');
-                img.src = src;
-                img.className = 'thumbnail w-16 h-20 object-cover rounded-md flex-shrink-0';
-                if (index === 0) img.classList.add('active');
-                img.onclick = () => changeImage(src, img, index);
-                thumbnailContainer.appendChild(img);
-            });
-            if (images.length > 0) {
-                changeImage(images[0], thumbnailContainer.querySelector('.thumbnail'), 0);
-            }
-        };
-
-        const changeImage = (imageSrc, thumbnailElement, index) => {
-            mainProductImage.style.opacity = 0;
-            setTimeout(() => {
-                mainProductImage.src = imageSrc;
-                mainProductImage.style.opacity = 1;
-            }, 150);
-            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
-            if(thumbnailElement) {
-               thumbnailElement.classList.add('active');
-            }
-            currentImageIndex = index;
-        };
-        
-        const scrollThumbnails = (direction) => {
-            const thumbnails = thumbnailContainer.querySelectorAll('.thumbnail');
-            if (thumbnails.length === 0) return;
-            let newIndex = currentImageIndex;
-            if (direction === 'prev') {
-                newIndex = (currentImageIndex - 1 + thumbnails.length) % thumbnails.length;
-            } else {
-                newIndex = (currentImageIndex + 1) % thumbnails.length;
-            }
-            thumbnails[newIndex].click();
-            thumbnails[newIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        };
-
-        // --- EVENT LISTENERS ---
-        menuBtn.addEventListener('click', toggleMenu);
-        document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(link => {
-            link.addEventListener('click', () => { if (menuBtn.classList.contains('open')) toggleMenu(); });
-        });
-
-        langToggleDesktop.addEventListener('click', () => setLanguage(currentLanguage === 'en' ? 'ar' : 'en'));
-        langToggleMobile.addEventListener('click', () => setLanguage(currentLanguage === 'en' ? 'ar' : 'en'));
-
-        document.querySelectorAll('.option-swatch').forEach(swatch => {
-            swatch.addEventListener('click', () => {
-                const group = swatch.dataset.group;
-                const value = swatch.dataset.value;
-                document.querySelectorAll(`.option-swatch[data-group="${group}"]`).forEach(s => s.classList.remove('selected'));
-                swatch.classList.add('selected');
-                if (group === 'product-color') updateThumbnailGallery(value);
-            });
-        });
-
-        // Thumbnail scroll buttons
-        document.getElementById('thumb-scroll-up').addEventListener('click', () => scrollThumbnails('prev'));
-        document.getElementById('thumb-scroll-down').addEventListener('click', () => scrollThumbnails('next'));
-        document.getElementById('thumb-scroll-left').addEventListener('click', () => scrollThumbnails('prev'));
-        document.getElementById('thumb-scroll-right').addEventListener('click', () => scrollThumbnails('next'));
-
-        const mainImageContainer = document.querySelector('.main-image-container');
-        mainImageContainer.addEventListener('mousemove', (e) => {
-            const rect = mainImageContainer.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            mainProductImage.style.transformOrigin = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
-            mainProductImage.style.transform = 'scale(2)';
-        });
-        mainImageContainer.addEventListener('mouseleave', () => {
-            mainProductImage.style.transformOrigin = 'center center';
-            mainProductImage.style.transform = 'scale(1)';
-        });
-
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const selectedColor = document.querySelector('.option-swatch[data-group="product-color"].selected')?.dataset.value || 'Not selected';
-            const selectedSize = document.querySelector('.option-swatch[data-group="product-size"].selected')?.dataset.value || 'Not selected';
-            const name = document.getElementById('name').value;
-            const address = document.getElementById('address').value;
-            const phone = document.getElementById('phone').value;
-            const phone2 = document.getElementById('phone2').value;
-
-            console.log('--- New Order ---');
-            console.log('Name:', name);
-            console.log('Phone:', phone);
-            console.log('Second Phone:', phone2);
-            console.log('Address:', address);
-            console.log('Color:', selectedColor);
-            console.log('Size:', selectedSize);
-            
-            const successMessage = currentLanguage === 'en' ? 'Thank you! Your order has been placed.' : 'شكراً لك! تم استلام طلبك.';
-            formMessage.textContent = successMessage;
-            contactForm.reset();
-            document.querySelectorAll('.option-swatch.selected').forEach(s => s.classList.remove('selected'));
-            
-            // Set defaults after submission
-            document.querySelector('.option-swatch[data-group="product-color"][data-value="Black"]').classList.add('selected');
-            document.querySelector('.option-swatch[data-group="product-size"][data-value="M"]').classList.add('selected');
-            updateThumbnailGallery('Black');
-
-            setTimeout(() => formMessage.textContent = '', 5000);
-        });
-
-        // --- INITIALIZE PAGE ---
-        document.addEventListener('DOMContentLoaded', () => {
-            setLanguage(currentLanguage, true);
-            
-            // Set default selections on page load
-            document.querySelector('.option-swatch[data-group="product-color"][data-value="Black"]').classList.add('selected');
-            document.querySelector('.option-swatch[data-group="product-size"][data-value="M"]').classList.add('selected');
-            updateThumbnailGallery('Black');
-        });
-    </script>
-
+    <script src="js/script.js"></script>
 </body>
+
 </html>

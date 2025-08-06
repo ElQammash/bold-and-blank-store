@@ -1,0 +1,244 @@
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom styles for typography and layout */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7fafc;
+}
+
+html[dir="rtl"] body {
+    font-family: 'Cairo', sans-serif;
+}
+
+/* All transition durations are now set to 0.5s for a smoother feel */
+.btn,
+.social-icon,
+.thumbnail,
+.option-swatch,
+.gift-bag-swatch,
+#main-product-image,
+.lang-translatable {
+    transition: all 0.5s ease-in-out;
+    transition: all 0.5s;
+
+}
+
+/* The primary buttons now have a more pronounced hover effect */
+.btn:hover {
+    transition: all 0.5s;
+    transform: translateY(-8px) scale(1.06);
+    /* Increased transform for a more noticeable lift */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+    /* Increased box-shadow for a more dramatic pop */
+}
+
+/* Specific hover state for the transparent 'Check our deal' button */
+.btn.bg-transparent:hover {
+    transform: translateY(-8px) scale(1.06);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background-color: #1f2937;
+    color: #ffffff;
+}
+
+/* Social Icon Hover Effects are now more prominent */
+.social-icon:hover {
+    transform: scale(1.3);
+}
+
+.facebook-hover:hover {
+    color: #1877F2;
+}
+
+.instagram-hover:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    color: #f00075;
+
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.instagram-icon-svg {
+    color: currentColor;
+}
+
+
+/* Hamburger Menu Animation */
+.hamburger {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: all 0.5s;
+    position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    top: 0;
+    left: 0;
+    background: #1f2937;
+    /* gray-800 */
+    border-radius: 2px;
+    transform: rotate(0);
+    transition: all 0.5s;
+}
+
+.hamburger-middle {
+    transform: translateY(7px);
+}
+
+.hamburger-bottom {
+    transform: translateY(14px);
+}
+
+.open .hamburger-top {
+    transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+
+.open .hamburger-middle {
+    display: none;
+}
+
+.open .hamburger-bottom {
+    transform: rotate(-45deg) translateY(6px) translateX(-6px);
+}
+
+/* Product Gallery */
+.thumbnail {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.5s ease, transform 0.5s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.thumbnail.active {
+    border-color: #ec4899;
+    /* pink-500 */
+    transform: scale(1.05);
+}
+
+.main-image-container {
+    overflow: hidden;
+    position: relative;
+}
+
+#main-product-image {
+    transition: transform 0.5s ease, opacity 0.5s ease-in-out;
+    will-change: transform;
+}
+
+/* The main product image now stays in view while scrolling through product details */
+.image-sticky {
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+}
+
+@media (max-width: 1023px) {
+
+    /* lg breakpoint */
+    .image-sticky {
+        position: static;
+        /* Disable sticky on smaller screens for better flow */
+    }
+}
+
+/* Color & Size Swatch Styling */
+.option-swatch {
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    border: 1px solid #d1d5db;
+    /* gray-300 */
+    -webkit-user-select: none;
+    user-select: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.option-swatch:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    /* Added a slight lift on hover */
+}
+
+.option-swatch.selected {
+    border-color: #1f2937;
+    /* gray-800 */
+    background-color: #1f2937;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    /* Slight scale on selection */
+}
+
+.color-swatch-product {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.color-swatch-product.selected {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1f2937;
+}
+
+.gift-bag-swatch {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    -webkit-user-select: none;
+    user-select: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.gift-bag-swatch:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.gift-bag-swatch.selected {
+    box-shadow: 0 0 0 2px #ec4899, 0 0 0 6px rgba(236, 72, 153, 0.5);
+    border-color: transparent;
+}
+
+/* Scrollbar Hiding Utility */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Smooth Language Transition */
+.lang-translatable {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.lang-translatable.fade-out {
+    opacity: 0;
+}
+
+/* Arabic Tagline Font Size Adjustment */
+html[dir="rtl"] #hero-tagline {
+    font-size: 2.1rem;
+    line-height: 1.5;
+}
+
+@media (min-width: 1024px) {
+
+    /* lg breakpoint */
+    html[dir="rtl"] #hero-tagline {
+        font-size: 2.6rem;
+    }
+}
