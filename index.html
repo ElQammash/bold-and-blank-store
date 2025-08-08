@@ -479,7 +479,7 @@
                     </div>
 
                     <!-- Integrated Order Form -->
-                    <form id="contactForm" class="mt-8" method="post" >
+                    <form id="contactForm" class="mt-8" method="post">
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 font-medium mb-2 lang-translatable"
                                 data-lang-en="Name" data-lang-ar="الاسم">Name</label>
@@ -509,7 +509,7 @@
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
                         </div>
                         <div class="mt-6">
-                            <button type="submit"
+                            <button type="submit" id="submitBtn"
                                 class="btn w-full bg-gray-900 text-white font-bold py-3 rounded-lg shadow-md hover:bg-gray-800 lang-translatable"
                                 data-lang-en="ORDER NOW!" data-lang-ar="اطلب الآن!">ORDER NOW!</button>
                         </div>
@@ -749,37 +749,69 @@
             mainProductImage.style.transform = 'scale(1)';
         });
 
-        contactForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+        contactForm.addEventListener('submit', async function (event) {
+            event.preventDefault(); // Prevent the default form submission (page reload)
+
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            
+            // The URL to your deployed Google Apps Script
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzCSBNX4i558TvEibAYm53d8uyf61M3kEZEhuRB1c-mEqf-dSy3WFDxH5Xg3Ms35m0r/exec';
+
+            // Get selected options
             const selectedColor = document.querySelector('.option-swatch[data-group="product-color"].selected')?.dataset.value || 'Not selected';
             const selectedSize = document.querySelector('.option-swatch[data-group="product-size"].selected')?.dataset.value || 'Not selected';
             const selectedGift = document.querySelector('.gift-bag-swatch.selected')?.dataset.value || 'None';
-            const name = document.getElementById('name').value;
-            const address = document.getElementById('address').value;
-            const phone = document.getElementById('phone').value;
-            const phone2 = document.getElementById('phone2').value;
 
-            console.log('--- New Order ---');
-            console.log('Name:', name);
-            console.log('Phone:', phone);
-            console.log('Second Phone:', phone2);
-            console.log('Address:', address);
-            console.log('Color:', selectedColor);
-            console.log('Size:', selectedSize);
-            console.log('Gift:', selectedGift);
+            // Create a FormData object from the form
+            const formData = new FormData(contactForm);
+            
+            // Append the selected options to the form data
+            formData.append('productColor', selectedColor);
+            formData.append('productSize', selectedSize);
+            formData.append('giftBag', selectedGift);
 
-            const successMessage = currentLanguage === 'en' ? 'Thank you! Your order has been placed.' : 'شكراً لك! تم استلام طلبك.';
-            formMessage.textContent = successMessage;
-            contactForm.reset();
-            document.querySelectorAll('.option-swatch.selected').forEach(s => s.classList.remove('selected'));
-            document.querySelectorAll('.gift-bag-swatch.selected').forEach(s => s.classList.remove('selected'));
+            // Show a loading message and disable the button
+            const sendingMsg = currentLanguage === 'en' ? 'Sending order...' : 'جاري إرسال الطلب...';
+            formMessage.textContent = sendingMsg;
+            formMessage.className = 'mt-4 text-blue-600 font-medium text-center';
+            submitBtn.disabled = true;
 
-            // Set defaults after submission
-            document.querySelector('.option-swatch[data-group="product-color"][data-value="Black"]').classList.add('selected');
-            document.querySelector('.option-swatch[data-group="product-size"][data-value="M"]').classList.add('selected');
-            updateThumbnailGallery('Black');
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData,
+                    redirect: 'follow'
+                });
 
-            setTimeout(() => formMessage.textContent = '', 5000);
+                if (response.ok) {
+                    const successMsg = currentLanguage === 'en' ? 'Success! Your order has been placed.' : '✅ تم الإرسال بنجاح!';
+                    formMessage.textContent = successMsg;
+                    formMessage.className = 'mt-4 text-green-600 font-medium text-center';
+                    contactForm.reset();
+                    
+                    // Reset selected options
+                    document.querySelectorAll('.option-swatch.selected').forEach(s => s.classList.remove('selected'));
+                    document.querySelectorAll('.gift-bag-swatch.selected').forEach(s => s.classList.remove('selected'));
+                    
+                    // Set default selections after submission
+                    document.querySelector('.option-swatch[data-group="product-color"][data-value="Black"]').classList.add('selected');
+                    document.querySelector('.option-swatch[data-group="product-size"][data-value="M"]').classList.add('selected');
+                    updateThumbnailGallery('Black');
+                } else {
+                    const errorMsg = currentLanguage === 'en' ? 'Error submitting order. Please try again.' : '❌ حدث خطأ أثناء الإرسال.';
+                    formMessage.textContent = errorMsg;
+                    formMessage.className = 'mt-4 text-red-600 font-medium text-center';
+                }
+            } catch (error) {
+                console.error('Submission Error:', error);
+                const networkErrorMsg = currentLanguage === 'en' ? 'Network error. Please check your connection.' : '⚠️ فشل الاتصال بالخادم.';
+                formMessage.textContent = networkErrorMsg;
+                formMessage.className = 'mt-4 text-red-600 font-medium text-center';
+            } finally {
+                submitBtn.disabled = false;
+                setTimeout(() => formMessage.textContent = '', 5000);
+            }
         });
 
         // --- INITIALIZE PAGE ---
@@ -792,41 +824,7 @@
             updateThumbnailGallery('Black');
             renderGiftBags();
         });
-          document.addEventListener("click", function (e) {
-    if (e.target.id === "submitForm") {
-      const name = document.getElementById("name").value.trim();
-      const address = document.getElementById("address").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const phone2 = document.getElementById("phone2").value.trim();
-
-      if (name && email && message) {
-        fetch("https://script.google.com/macros/s/AKfycbzCSBNX4i558TvEibAYm53d8uyf61M3kEZEhuRB1c-mEqf-dSy3WFDxH5Xg3Ms35m0r/exec", {
-          method: "POST",
-          body: new URLSearchParams({
-            name,
-            email,
-            message
-          })
-        })
-        .then(response => response.text())
-        .then(text => {
-          if (text.includes("success")) {
-            document.getElementById("formResult").innerText = "✅ تم الإرسال بنجاح!";
-          } else {
-            document.getElementById("formResult").innerText = "❌ حدث خطأ أثناء الإرسال.";
-            console.error("Server error:", text);
-          }
-        })
-        .catch(error => {
-          document.getElementById("formResult").innerText = "⚠️ فشل الاتصال بالخادم.";
-          console.error("Fetch error:", error);
-        });
-      } else {
-        document.getElementById("formResult").innerText = "يرجى تعبئة جميع الحقول.";
-      }
-    }
-  });
-
+        
     </script>
 </body>
 
