@@ -17,7 +17,252 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Cairo:wght@400;500;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom styles for typography and layout */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7fafc;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* All transition durations are now set to 0.5s for a smoother feel */
+        .btn,
+        .social-icon,
+        .thumbnail,
+        .option-swatch,
+        .gift-bag-swatch,
+        #main-product-image,
+        .lang-translatable {
+            transition: all 0.5s ease-in-out;
+            transition: all 0.5s;
+
+        }
+
+        /* The primary buttons now have a more pronounced hover effect */
+        .btn:hover {
+            transition: all 0.5s;
+            transform: translateY(-8px) scale(1.06);
+            /* Increased transform for a more noticeable lift */
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+            /* Increased box-shadow for a more dramatic pop */
+        }
+
+        /* Specific hover state for the transparent 'Check our deal' button */
+        .btn.bg-transparent:hover {
+            transform: translateY(-8px) scale(1.06);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background-color: #1f2937;
+            color: #ffffff;
+        }
+
+        /* Social Icon Hover Effects are now more prominent */
+        .social-icon:hover {
+            transform: scale(1.3);
+        }
+
+        .facebook-hover:hover {
+            color: #1877F2;
+        }
+
+        .instagram-hover:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            color: #f00075;
+
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .instagram-icon-svg {
+            color: currentColor;
+        }
+
+
+        /* Hamburger Menu Animation */
+        .hamburger {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            transition: all 0.5s;
+            position: relative;
+        }
+
+        .hamburger-top,
+        .hamburger-middle,
+        .hamburger-bottom {
+            position: absolute;
+            width: 24px;
+            height: 3px;
+            top: 0;
+            left: 0;
+            background: #1f2937;
+            /* gray-800 */
+            border-radius: 2px;
+            transform: rotate(0);
+            transition: all 0.5s;
+        }
+
+        .hamburger-middle {
+            transform: translateY(7px);
+        }
+
+        .hamburger-bottom {
+            transform: translateY(14px);
+        }
+
+        .open .hamburger-top {
+            transform: rotate(45deg) translateY(6px) translateX(6px);
+        }
+
+        .open .hamburger-middle {
+            display: none;
+        }
+
+        .open .hamburger-bottom {
+            transform: rotate(-45deg) translateY(6px) translateX(-6px);
+        }
+
+        /* Product Gallery */
+        .thumbnail {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.5s ease, transform 0.5s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .thumbnail.active {
+            border-color: #ec4899;
+            /* pink-500 */
+            transform: scale(1.05);
+        }
+
+        .main-image-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        #main-product-image {
+            transition: transform 0.5s ease, opacity 0.5s ease-in-out;
+            will-change: transform;
+        }
+
+        /* The main product image now stays in view while scrolling through product details */
+        .image-sticky {
+            position: sticky;
+            top: 100px;
+            align-self: flex-start;
+        }
+
+        @media (max-width: 1023px) {
+
+            /* lg breakpoint */
+            .image-sticky {
+                position: static;
+                /* Disable sticky on smaller screens for better flow */
+            }
+        }
+
+        /* Color & Size Swatch Styling */
+        .option-swatch {
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+            border: 1px solid #d1d5db;
+            /* gray-300 */
+            -webkit-user-select: none;
+            user-select: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .option-swatch:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            /* Added a slight lift on hover */
+        }
+
+        .option-swatch.selected {
+            border-color: #1f2937;
+            /* gray-800 */
+            background-color: #1f2937;
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+            /* Slight scale on selection */
+        }
+
+        .color-swatch-product {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+        .color-swatch-product.selected {
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1f2937;
+        }
+
+        .gift-bag-swatch {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            -webkit-user-select: none;
+            user-select: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .gift-bag-swatch:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .gift-bag-swatch.selected {
+            box-shadow: 0 0 0 2px #ec4899, 0 0 0 6px rgba(236, 72, 153, 0.5);
+            border-color: transparent;
+        }
+
+        /* Scrollbar Hiding Utility */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        /* Smooth Language Transition */
+        .lang-translatable {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .lang-translatable.fade-out {
+            opacity: 0;
+        }
+
+        /* Arabic Tagline Font Size Adjustment */
+        html[dir="rtl"] #hero-tagline {
+            font-size: 2.1rem;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 1024px) {
+
+            /* lg breakpoint */
+            html[dir="rtl"] #hero-tagline {
+                font-size: 2.6rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-white text-gray-800">
@@ -28,8 +273,7 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="#" class="wow animate__animated animate__fadeInDown">
-                    <img src="images/logo.png" alt="Bold & Blank Logo"
-                        class="h-10 w-auto"
+                    <img src="images/logo.png" alt="Bold & Blank Logo" class="h-10 w-auto"
                         onerror="this.onerror=null;this.src='https://placehold.co/150x50/ffffff/333333?text=Logo';">
                 </a>
                 <!-- Desktop Navigation -->
@@ -117,8 +361,7 @@
                 <!-- Right Part: Logo and Tagline -->
                 <div class="w-full md:w-1/2 flex flex-col items-center text-center md:pl-12 rtl:md:pl-0 rtl:md:pr-12 mb-10 md:mb-0 wow animate__animated animate__fadeInRight"
                     data-wow-delay="0.2s">
-                    <img src="images/logo.png" alt="Bold & Blank Logo"
-                        class="w-56 md:w-48 h-auto mb-6"
+                    <img src="images/logo.png" alt="Bold & Blank Logo" class="w-56 md:w-48 h-auto mb-6"
                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/ffffff/333333?text=Logo';">
                     <p id="hero-tagline"
                         class="mt-4 text-4xl lg:text-5xl font-bold text-gray-900 max-w-md leading-tight lang-translatable"
@@ -236,7 +479,7 @@
                     </div>
 
                     <!-- Integrated Order Form -->
-                    <form id="contactForm" class="mt-8">
+                    <form id="contactForm" class="mt-8" method="post" action="[https://script.google.com/macros/s/AKfycbyRNJeXpyOwtzCiZuV62Q7gDSbRE8XqmSu4zJo9JFyU-hPbYOfO9zLmH9xlSOYcH1_2/exec]">
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 font-medium mb-2 lang-translatable"
                                 data-lang-en="Name" data-lang-ar="الاسم">Name</label>
@@ -318,7 +561,273 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 
 
-    <script src="js/script.js"></script>
+    <script>
+        // Initialize WOW.js
+        new WOW().init();
+
+        // --- DATA ---
+        const imageSets = {
+            'Black': ['https://placehold.co/600x750/2d2d2d/ffffff?text=Black+1', 'https://placehold.co/600x750/2d2d2d/ffffff?text=Black+2', 'https://placehold.co/600x750/2d2d2d/ffffff?text=Black+3', 'https://placehold.co/600x750/2d2d2d/ffffff?text=Black+4', 'https://placehold.co/600x750/2d2d2d/ffffff?text=Black+5'],
+            'Pink': ['https://placehold.co/600x750/e88793/ffffff?text=Pink+1', 'https://placehold.co/600x750/e88793/ffffff?text=Pink+2', 'https://placehold.co/600x750/e88793/ffffff?text=Pink+3', 'https://placehold.co/600x750/e88793/ffffff?text=Pink+4', 'https://placehold.co/600x750/e88793/ffffff?text=Pink+5'],
+            'Green': ['https://placehold.co/600x750/5b8c8d/ffffff?text=Green+1', 'https://placehold.co/600x750/5b8c8d/ffffff?text=Green+2', 'https://placehold.co/600x750/5b8c8d/ffffff?text=Green+3', 'https://placehold.co/600x750/5b8c8d/ffffff?text=Green+4', 'https://placehold.co/600x750/5b8c8d/ffffff?text=Green+5']
+        };
+
+        const giftBags = [{
+            value: 'Bag 1',
+            src: './images/bag-1.jpg'
+        }, {
+            value: 'Bag 2',
+            src: './images/bag-2.jpg'
+        }, {
+            value: 'Bag 3',
+            src: './images/bag-3.jpg'
+        }, {
+            value: 'Bag 4',
+            src: './images/bag-4.jpg'
+        }, {
+            value: 'Bag 5',
+            src: './images/bag-5.jpg'
+        },];
+
+        let currentLanguage = localStorage.getItem('language') || 'en';
+        let currentImageIndex = 0;
+
+        // --- DOM ELEMENTS ---
+        const thumbnailContainer = document.getElementById('thumbnail-container');
+        const mainProductImage = document.getElementById('main-product-image');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const langToggleDesktop = document.getElementById('lang-toggle-desktop');
+        const langToggleMobile = document.getElementById('lang-toggle-mobile');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const giftBagSelector = document.getElementById('gift-bag-selector');
+        const imageStickyWrapper = document.querySelector('.image-sticky');
+
+        // --- FUNCTIONS ---
+        const setLanguage = (lang, isInitialLoad = false) => {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            const elements = document.querySelectorAll('.lang-translatable');
+
+            // If not the initial load, fade out the current text first
+            if (!isInitialLoad) {
+                elements.forEach(el => el.classList.add('fade-out'));
+
+                // Wait for the fade-out transition to complete
+                setTimeout(() => {
+                    updateTextAndFadeIn();
+                }, 500); // This matches the 0.5s transition time
+            } else {
+                updateTextAndFadeIn();
+            }
+
+            function updateTextAndFadeIn() {
+                elements.forEach(el => {
+                    const newText = lang === 'ar' ? el.dataset.langAr : el.dataset.langEn;
+                    el.innerText = newText;
+                    el.classList.remove('fade-out');
+                });
+                langToggleDesktop.innerText = lang === 'en' ? 'AR' : 'EN';
+                langToggleMobile.innerText = lang === 'en' ? 'AR' : 'EN';
+            }
+        };
+
+        const toggleMenu = () => {
+            menuBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('max-h-0');
+            mobileMenu.classList.toggle('max-h-screen');
+            mobileMenu.classList.toggle('opacity-0');
+        };
+
+        const updateThumbnailGallery = (color) => {
+            const images = imageSets[color] || [];
+            thumbnailContainer.innerHTML = '';
+            currentImageIndex = 0;
+            images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = 'thumbnail w-16 h-20 object-cover rounded-md flex-shrink-0';
+                img.onerror = function () {
+                    this.src = 'https://placehold.co/600x750/cccccc/333333?text=Image+Not+Found';
+                };
+                if (index === 0) img.classList.add('active');
+                img.onclick = () => changeImage(src, img, index);
+                thumbnailContainer.appendChild(img);
+            });
+            if (images.length > 0) {
+                changeImage(images[0], thumbnailContainer.querySelector('.thumbnail'), 0);
+            }
+        };
+
+        const changeImage = (imageSrc, thumbnailElement, index) => {
+            mainProductImage.style.opacity = 0;
+            setTimeout(() => {
+                mainProductImage.src = imageSrc;
+                mainProductImage.style.opacity = 1;
+            }, 150);
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            if (thumbnailElement) {
+                thumbnailElement.classList.add('active');
+            }
+            currentImageIndex = index;
+        };
+
+        const scrollThumbnails = (direction) => {
+            const thumbnails = thumbnailContainer.querySelectorAll('.thumbnail');
+            if (thumbnails.length === 0) return;
+            let newIndex = currentImageIndex;
+            if (direction === 'prev') {
+                newIndex = (currentImageIndex - 1 + thumbnails.length) % thumbnails.length;
+            } else {
+                newIndex = (currentImageIndex + 1) % thumbnails.length;
+            }
+            thumbnails[newIndex].click();
+            thumbnails[newIndex].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        };
+
+        const renderGiftBags = () => {
+            giftBagSelector.innerHTML = '';
+            giftBags.forEach(bag => {
+                const bagContainer = document.createElement('div');
+                bagContainer.className = 'gift-bag-swatch relative overflow-hidden rounded-lg cursor-pointer transition-all duration-500 transform';
+                bagContainer.dataset.group = 'gift-bag';
+                bagContainer.dataset.value = bag.value;
+                bagContainer.innerHTML = `<img src="${bag.src}" alt="${bag.value}" class="w-full h-full object-cover rounded-lg">`;
+                bagContainer.addEventListener('click', () => {
+                    document.querySelectorAll('.gift-bag-swatch').forEach(s => s.classList.remove('selected'));
+                    bagContainer.classList.add('selected');
+                });
+                giftBagSelector.appendChild(bagContainer);
+            });
+        };
+
+        // --- EVENT LISTENERS ---
+        menuBtn.addEventListener('click', toggleMenu);
+        document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuBtn.classList.contains('open')) toggleMenu();
+            });
+        });
+
+        langToggleDesktop.addEventListener('click', () => setLanguage(currentLanguage === 'en' ? 'ar' : 'en'));
+        langToggleMobile.addEventListener('click', () => setLanguage(currentLanguage === 'en' ? 'ar' : 'en'));
+
+        document.querySelectorAll('.option-swatch').forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                const group = swatch.dataset.group;
+                const value = swatch.dataset.value;
+                document.querySelectorAll(`.option-swatch[data-group="${group}"]`).forEach(s => s.classList.remove('selected'));
+                swatch.classList.add('selected');
+                if (group === 'product-color') updateThumbnailGallery(value);
+            });
+        });
+
+        // Thumbnail scroll buttons
+        document.getElementById('thumb-scroll-up').addEventListener('click', () => scrollThumbnails('prev'));
+        document.getElementById('thumb-scroll-down').addEventListener('click', () => scrollThumbnails('next'));
+        document.getElementById('thumb-scroll-left').addEventListener('click', () => scrollThumbnails('prev'));
+        document.getElementById('thumb-scroll-right').addEventListener('click', () => scrollThumbnails('next'));
+
+        const mainImageContainer = document.querySelector('.main-image-container');
+        mainImageContainer.addEventListener('mousemove', (e) => {
+            const rect = mainImageContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            mainProductImage.style.transformOrigin = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
+            mainProductImage.style.transform = 'scale(2)';
+        });
+        mainImageContainer.addEventListener('mouseleave', () => {
+            mainProductImage.style.transformOrigin = 'center center';
+            mainProductImage.style.transform = 'scale(1)';
+        });
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const selectedColor = document.querySelector('.option-swatch[data-group="product-color"].selected')?.dataset.value || 'Not selected';
+            const selectedSize = document.querySelector('.option-swatch[data-group="product-size"].selected')?.dataset.value || 'Not selected';
+            const selectedGift = document.querySelector('.gift-bag-swatch.selected')?.dataset.value || 'None';
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const phone2 = document.getElementById('phone2').value;
+
+            console.log('--- New Order ---');
+            console.log('Name:', name);
+            console.log('Phone:', phone);
+            console.log('Second Phone:', phone2);
+            console.log('Address:', address);
+            console.log('Color:', selectedColor);
+            console.log('Size:', selectedSize);
+            console.log('Gift:', selectedGift);
+
+            const successMessage = currentLanguage === 'en' ? 'Thank you! Your order has been placed.' : 'شكراً لك! تم استلام طلبك.';
+            formMessage.textContent = successMessage;
+            contactForm.reset();
+            document.querySelectorAll('.option-swatch.selected').forEach(s => s.classList.remove('selected'));
+            document.querySelectorAll('.gift-bag-swatch.selected').forEach(s => s.classList.remove('selected'));
+
+            // Set defaults after submission
+            document.querySelector('.option-swatch[data-group="product-color"][data-value="Black"]').classList.add('selected');
+            document.querySelector('.option-swatch[data-group="product-size"][data-value="M"]').classList.add('selected');
+            updateThumbnailGallery('Black');
+
+            setTimeout(() => formMessage.textContent = '', 5000);
+        });
+
+        // --- INITIALIZE PAGE ---
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLanguage, true);
+
+            // Set default selections on page load
+            document.querySelector('.option-swatch[data-group="product-color"][data-value="Black"]').classList.add('selected');
+            document.querySelector('.option-swatch[data-group="product-size"][data-value="M"]').classList.add('selected');
+            updateThumbnailGallery('Black');
+            renderGiftBags();
+        });
+          document.addEventListener("click", function (e) {
+    if (e.target.id === "submitForm") {
+      const name = document.getElementById("name").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const phone2 = document.getElementById("phone2").value.trim();
+
+      if (name && email && message) {
+        fetch("https://script.google.com/macros/s/AKfycbzLyzbHOnddGTjrIB7h2-tBJmnx209Ia2TFAZXYlt02Ioy6t4ia1kuGruE70mLqL9Tk/exec", {
+          method: "POST",
+          body: new URLSearchParams({
+            name,
+            email,
+            message
+          })
+        })
+        .then(response => response.text())
+        .then(text => {
+          if (text.includes("success")) {
+            document.getElementById("formResult").innerText = "✅ تم الإرسال بنجاح!";
+          } else {
+            document.getElementById("formResult").innerText = "❌ حدث خطأ أثناء الإرسال.";
+            console.error("Server error:", text);
+          }
+        })
+        .catch(error => {
+          document.getElementById("formResult").innerText = "⚠️ فشل الاتصال بالخادم.";
+          console.error("Fetch error:", error);
+        });
+      } else {
+        document.getElementById("formResult").innerText = "يرجى تعبئة جميع الحقول.";
+      }
+    }
+  });
+
+    </script>
 </body>
 
 </html>
